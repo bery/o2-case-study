@@ -1,25 +1,25 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include "appa.fullname" . }}
+  name: {{ include "app.fullname" . }}
   labels:
-{{ include "appa.labels" . | indent 4 }}
+{{ include "app.labels" . | indent 4 }}
 spec:
   replicas: {{ .Values.replicaCount }}
   selector:
     matchLabels:
-      app.kubernetes.io/name: {{ include "appa.name" . }}
+      app.kubernetes.io/name: {{ include "app.name" . }}
       app.kubernetes.io/instance: {{ .Release.Name }}
   template:
     metadata:
       labels:
-{{ include "appa.labels" . | indent 8 }}
+{{ include "app.labels" . | indent 8 }}
     spec:
     {{- with .Values.imagePullSecrets }}
       imagePullSecrets:
         {{- toYaml . | nindent 8 }}
     {{- end }}
-      serviceAccountName: {{ template "appa.serviceAccountName" . }}
+      serviceAccountName: {{ template "app.serviceAccountName" . }}
       securityContext:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
       containers:

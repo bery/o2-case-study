@@ -1,4 +1,4 @@
-# Default values for appa.
+# Default values for app.
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
@@ -75,5 +75,5 @@ affinity:
               - key: app.kubernetes.io/name
                 operator: In
                 values:
-                  - appa
+                  - app
           topologyKey: "kubernetes.io/hostname"
