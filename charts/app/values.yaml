@@ -1,6 +1,8 @@
 # Default values for app.
 # This is a YAML-formatted file.
-# Declare variables to be passed into your templates.
+
+#use dummy version to simulate rolling update
+version: "0.1.0"
 
 replicaCount: 3
 

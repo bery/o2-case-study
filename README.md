@@ -4,7 +4,7 @@
 - Parts of the application shall communicate with each other. 
 - Provide a definition of the cluster and the deployed application (code + description). 
 
-## Local development
+## Example 1 Azure K8s service
 - create Azure account
 - setup Azure CLI - https://docs.microsoft.com/en-us/azure/aks/kubernetes-walkthrough
 - provision the testing cluster ```./bin/10_cluster.sh```, wait for the scrip to finish
@@ -15,7 +15,7 @@
 - verify that the two deployments were deployed ```helm list --all```
 - run code below to connect to the desired service "appa" or "appb"
 ```
-export APP_LABEL="appa" ./tests/bin/init.sh
+export APP_LABEL="appa" ./bin/30_test.sh
 ```
 - simple python webservice which returns request parameters and environment variables
 - look for HOSTNAME and confirm that it corresponds with output of ```kubectl get pods -o wide```
