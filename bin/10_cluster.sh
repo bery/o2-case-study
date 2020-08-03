@@ -1,4 +1,6 @@
 #!/usr/bin/env bash
+# Create the resource group, provision cluster and configure kubectl credentials.
+# List pods and start local tiller
 RESOURCE_GROUP="aiAppResourceGroup"
 CLUSTER_NAME="aiCluster"
 MACHINE_TYPE="Standard_DS2_v2"

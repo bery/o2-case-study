@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+# Proxy the desired service to local port using port forwarding
 set -x
 
 APP_LABEL=${APP_LABEL:-"appa"}

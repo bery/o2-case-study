@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+# Perform a rolling update by changing a dummy version variable
 
 echo "performing a rolling update"
 helm tiller start-ci default && \

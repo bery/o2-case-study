@@ -11,7 +11,7 @@
 - k8s cluster is in Azure cloud, 2 nodes with default machines (2 cores, 7 GB ram)
 Note: Azure cloud does not allow smaller instance types
 
-## Example 1 Azure K8s service
+## Example 1 - Azure K8s service
 - create Azure account
 - setup Azure CLI - https://docs.microsoft.com/en-us/azure/aks/kubernetes-walkthrough
 - provision the testing cluster ```./bin/10_cluster.sh```, wait for the scrip to finish
