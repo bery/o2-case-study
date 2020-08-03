@@ -2,9 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a8a2b869-fe01-412b-b789-cfcfe62c3f96" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/bin/50_nginx.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/40_upgrade.sh" beforeDir="false" afterPath="$PROJECT_DIR$/bin/40_upgrade.sh" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -59,7 +58,8 @@
       <option name="presentableId" value="Default" />
       <updated>1596454987064</updated>
       <workItem from="1596454990678" duration="4444000" />
-      <workItem from="1596461321354" duration="5655000" />
+      <workItem from="1596461321354" duration="5816000" />
+      <workItem from="1596467881418" duration="10000" />
     </task>
     <servers />
   </component>
