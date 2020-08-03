@@ -1,3 +1,4 @@
+# app main deployment file
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -5,14 +6,17 @@ metadata:
   labels:
 {{ include "app.labels" . | indent 4 }}
 spec:
+  #set replicas from values file
   replicas: {{ .Values.replicaCount }}
   selector:
     matchLabels:
+      # kubernetes app selectors from template and release name
       app.kubernetes.io/name: {{ include "app.name" . }}
       app.kubernetes.io/instance: {{ .Release.Name }}
   template:
     metadata:
       labels:
+# include the label template
 {{ include "app.labels" . | indent 8 }}
     spec:
     {{- with .Values.imagePullSecrets }}
@@ -20,17 +24,13 @@ spec:
         {{- toYaml . | nindent 8 }}
     {{- end }}
       serviceAccountName: {{ template "app.serviceAccountName" . }}
-      securityContext:
-        {{- toYaml .Values.podSecurityContext | nindent 8 }}
       containers:
         - name: {{ .Chart.Name }}
-          securityContext:
-            {{- toYaml .Values.securityContext | nindent 12 }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           ports:
             - name: http
-              containerPort: 80
+              containerPort: {{ .Values.service.port }} #same as service port
               protocol: TCP
           livenessProbe:
             httpGet:
@@ -42,15 +42,17 @@ spec:
               port: http
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
-      {{- with .Values.nodeSelector }}
-      nodeSelector:
-        {{- toYaml . | nindent 8 }}
-      {{- end }}
-    {{- with .Values.affinity }}
+# the main magic happens here - make sure that not all the pods are running on the same node and at least
+# one is running on different machine in the cluster by appname
       affinity:
-        {{- toYaml . | nindent 8 }}
-    {{- end }}
-    {{- with .Values.tolerations }}
-      tolerations:
-        {{- toYaml . | nindent 8 }}
-    {{- end }}
+        podAntiAffinity:
+          preferredDuringSchedulingIgnoredDuringExecution:
+            - weight: 1
+              podAffinityTerm:
+                labelSelector:
+                  matchExpressions:
+                    - key: app.kubernetes.io/name
+                      operator: In
+                      values:
+                        - {{ include "app.name" . }}
+                topologyKey: "kubernetes.io/hostname"

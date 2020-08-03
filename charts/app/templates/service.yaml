@@ -1,3 +1,4 @@
+# deploy service that manages pods and creates and endpoint for them
 apiVersion: v1
 kind: Service
 metadata:
