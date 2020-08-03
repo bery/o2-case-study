@@ -10,4 +10,5 @@ az aks create \
     --node-vm-size "${MACHINE_TYPE}" \
     --generate-ssh-keys && \
 az aks get-credentials --resource-group "${RESOURCE_GROUP}" --name "${CLUSTER_NAME}" && \
-kubectl get pods --all-namespaces
+kubectl get pods --all-namespaces && \
+helm tiller start default

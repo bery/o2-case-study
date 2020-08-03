@@ -30,13 +30,19 @@ export APP_LABEL="appa" ./bin/30_test.sh
 - kill the proxy command
 
 ## Example 2 - change the image to nginx
-- run ``````
+- run ```./bin/50_nginx.sh```
+- run
+```
+export APP_LABEL="appa" ./bin/30_test.sh
+```
+- open ```localhost:8080``` and observe that default nginx welcome page is returned
 
 ## Troubleshooting
 - in case that something went wrong with helm deployment, run ```helm delete --purge <release_name>``` and start over
 
 ## Notes
 - for production release a tillerless approach would be much more secure
+- ```--wait``` flag is used to make sure that the rolling update or helm install succeeded
 
 ## Links
 - helm.sh
