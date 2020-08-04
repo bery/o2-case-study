@@ -41,10 +41,8 @@ export APP_LABEL="appa" ./bin/30_test.sh
 - in case that something went wrong with helm deployment, run ```helm delete --purge <release_name>``` and start over
 
 ## Notes
-- for production release a tillerless approach would be much more secure
 - ```--wait``` flag is used to make sure that the rolling update or helm install succeeded
 
 ## Links
 - helm.sh
-- https://github.com/rimusz/helm-tiller
 - https://ealenn.github.io/Echo-Server/
